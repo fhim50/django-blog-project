@@ -35,7 +35,8 @@ def post_detail(request, id, showComments=False):
 def post_search(request, term):
     search = Post.objects.filter(
 	Q(title__icontains= term)|
-	Q(body__icontains = term))
+	Q(body__icontains = term)
+	Q(created__icontains = term))
     return HttpResponse(search)
 '''
     term= request.GET.get('term')
