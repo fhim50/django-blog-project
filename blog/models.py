@@ -9,6 +9,8 @@ class Post(models.Model):
     updated = models.DateField()
     def __unicode__(self):
 	return self.title
+    #comment = models.ForeignKey(Comment)
+	
     
 class Comment(models.Model):
     body=models.TextField()
@@ -30,22 +32,13 @@ class PostAdmin(admin.ModelAdmin):
 	CommentInline,
     ]
 
-
-
 class CommentAdmin(admin.ModelAdmin):
     def body_first_60(self):
        return self.body[:60]
     list_display=('post','author','body_first_60','created','updated')
     list_filter = ('created','author')
-    
-  
 
-
-
-
-    
-
-admin.site.register(Post,PostAdmin)
-admin.site.register(Comment,CommentAdmin)
 #admin.site.register(Post)
 #admin.site.register(Comment)
+admin.site.register(Post,PostAdmin)
+admin.site.register(Comment,CommentAdmin)
