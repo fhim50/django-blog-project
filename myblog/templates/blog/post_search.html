@@ -1,9 +1,9 @@
-{% extends  /blog/base.html%}
-{% block content % }
+{% extends  "blog/base.html"%}
+{% block content %}
 {% for post in posts %}
 <ul>
 	<li> search : {{post.posts}}</li>
-        <a href="/blog/posts/{{ post.id }}"> title</a>
+        <a href="/blog/posts/{{ post.body}}">{{post.title}}</a>
 </ul>
 {% endfor %}
-{%endblock%}
+{% endblock %}

@@ -40,11 +40,17 @@ g
 	return HttpResponse("<h1> has no comments</h1>" % post_list)
     pass
 '''
+
+
 def post_search(request, term):
-    search = Post.objects.filter(
-	Q(title__icontains= term)|
-	Q(body__icontains = term))
-    return HttpResponse(search)
+    #posts = Post.objects.filter(
+	#Q(title__icontains= term)|
+	#Q(body__icontains = term))
+    posts = Post.objects.filter(body__contains = term)
+    return render_to_response('blog/post_search.html',{'posts':posts,'term':term})
+
+
+
 '''
     term= request.GET.get('term')
     if term is not None:
