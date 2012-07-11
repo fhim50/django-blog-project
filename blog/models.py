@@ -9,6 +9,7 @@ class Post(models.Model):
     updated = models.DateField()
     def __unicode__(self):
 	return self.title
+    
     #comment = models.ForeignKey(Comment)
 	
     
@@ -20,6 +21,7 @@ class Comment(models.Model):
     def __unicode__(self):
 	return self.body
     post = models.ForeignKey(Post)
+    
 
 class CommentInline(admin.TabularInline):
     model=Comment
